@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.5",
   "name": "pw-google-plus",
   "cordova_name": "Google SignIn",
   "description": "Use your Google account to authenticate with the app.",

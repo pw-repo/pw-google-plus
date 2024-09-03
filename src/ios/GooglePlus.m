@@ -84,7 +84,7 @@
 
     NSString *clientId = [self reverseUrlScheme:reversedClientId];
 
-    GIDConfiguration* config = [[GIDConfiguration alloc] initWithClientID:clientId serverClientID:options[@"webClientId"] hostedDomain:options[@"hostedDomain"]];
+    GIDConfiguration* config = [[GIDConfiguration alloc] initWithClientID:clientId serverClientID:options[@"webClientId"] hostedDomain:options[@"hostedDomain"] openIDRealm:options[@"openIDRealm"]];
 
     GIDSignIn.sharedInstance.configuration = config;
 }
