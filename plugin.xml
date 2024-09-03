@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="pw-google-plus"
-        version="1.0.0">
+        version="1.0.1">
 
   <name>Google SignIn</name>
 
@@ -48,8 +48,8 @@
   </platform>
 
   <platform name="ios">
-    <preference name="IOS_GOOGLESIGNIN_VERSION" default="~> 5.0.2"/>
-    <preference name="IOS_GOOGLEUTILITIES_VERSION" default="~> 6.7"/>
+    <preference name="IOS_GOOGLESIGNIN_VERSION" default="~> 7.1.0"/>
+    <preference name="IOS_GOOGLEUTILITIES_VERSION" default="~> 7.13"/>
     <config-file target="config.xml" parent="/*">
       <feature name="GooglePlus">
         <param name="ios-package" value="GooglePlus"/>
