@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "name": "pw-googleplus",
+  "cordova_name": "Google SignIn",
+  "description": "Use your Google account to authenticate with the app.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pw-repo/pw-google-plus.git"
+  },
+  "homepage": "https://github.com/pw-repo/pw-google-plus#readme",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "dependencies": {
+    "q": "*"
+  }
+}
