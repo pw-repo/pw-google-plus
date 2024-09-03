@@ -42,8 +42,6 @@ import android.content.pm.Signature;
  * Forked/Duplicated and Modified by PointSource, LLC, 2016.
  */
 public class GooglePlus extends CordovaPlugin implements GoogleApiClient.OnConnectionFailedListener {
-
-    public static final String ACTION_IS_AVAILABLE = "isAvailable";
     public static final String ACTION_LOGIN = "login";
     public static final String ACTION_TRY_SILENT_LOGIN = "trySilentLogin";
     public static final String ACTION_LOGOUT = "logout";
@@ -78,11 +76,7 @@ public class GooglePlus extends CordovaPlugin implements GoogleApiClient.OnConne
     public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
         this.savedCallbackContext = callbackContext;
 
-        if (ACTION_IS_AVAILABLE.equals(action)) {
-            final boolean avail = true;
-            savedCallbackContext.success("" + avail);
-
-        } else if (ACTION_LOGIN.equals(action)) {
+        if (ACTION_LOGIN.equals(action)) {
             //pass args into api client build
             buildGoogleApiClient(args.optJSONObject(0));
 

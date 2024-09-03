@@ -40,14 +40,6 @@
     }
 }
 
-// If this returns false, you better not call the login function because of likely app rejection by Apple,
-// see https://code.google.com/p/google-plus-platform/issues/detail?id=900
-// Update: should be fine since we use the GoogleSignIn framework instead of the GooglePlus framework
-- (void) isAvailable:(CDVInvokedUrlCommand*)command {
-  CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:YES];
-  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
 - (void) login:(CDVInvokedUrlCommand*)command {
     _callbackId = command.callbackId;
     NSDictionary* options = command.arguments[0];
@@ -55,7 +47,12 @@
     [self configureSignInWithOptions:options];
 
     NSString *hint = options[@"hint"];
-    NSArray* scopes = options[@"scopes"];
+    NSString* scopesString = options[@"scopes"];
+    NSArray* scopes = nil;
+
+    if (scopesString != nil) {
+        scopes = [scopesString componentsSeparatedByString:@" "];
+    }
 
     [GIDSignIn.sharedInstance signInWithPresentingViewController:self.viewController hint:hint additionalScopes:scopes completion:^(GIDSignInResult * _Nullable signInResult, NSError * _Nullable error) {
        [self handleCompletion:signInResult withError:error];
@@ -68,7 +65,7 @@
 
     [self configureSignInWithOptions:options];
 
-    [GIDSignIn.sharedInstance restorePreviousSignInWithCompletion:^(GIDGoogleUser * user, NSError * _Nullable error) {
+    [GIDSignIn.sharedInstance restorePreviousSignInWithCompletion:^(GIDGoogleUser * _Nullable user, NSError * _Nullable error) {
       [self handleCompletion:user serverAuthCode:nil withError:error];
     }];
 }
@@ -156,7 +153,7 @@
   [GIDSignIn.sharedInstance disconnectWithCompletion:^(NSError * _Nullable error) {
     if (error) {
       CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.localizedDescription];
-      [self.commandDelegate sendPluginResult:pluginResult callbackId:self->_callbackId];
+      [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
     else {
       CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"disconnected"];
@@ -164,10 +161,6 @@
     }
   }];
 
-}
-
-- (void) share_unused:(CDVInvokedUrlCommand*)command {
-  // for a rainy day.. see for a (limited) example https://github.com/vleango/GooglePlus-PhoneGap-iOS/blob/master/src/ios/GPlus.m
 }
 
 #pragma mark - GIDSignInDelegate

@@ -10,16 +10,15 @@
 ## 0. Index
 
 1. [Description](#1-description)
-2. [Screenshots](#2-screenshots)
-3. [Google API setup](#3-google-api-setup)
-4. [Installation (CLI / Plugman)](#4-installation-phonegap-cli--cordova-cli)
-5. [Installation (PhoneGap Build)](#5-installation-phonegap-build)
-6. [Installation (iOS and Cocoapods)](#6-installation-ios-and-cocoapods)
-7. [Usage](#7-usage)
-8. [Exchanging the `idToken`](#8-exchanging-the-idtoken)
-9. [Exchanging the `serverAuthCode`](#9-exchanging-the-serverauthcode)
-10. [Troubleshooting](#10-troubleshooting)
-11. [Changelog](#11-changelog)
+2. [Google API setup](#2-google-api-setup)
+3. [Installation (CLI / Plugman)](#3-installation-phonegap-cli--cordova-cli)
+4. [Installation (PhoneGap Build)](#4-installation-phonegap-build)
+5. [Installation (iOS and Cocoapods)](#5-installation-ios-and-cocoapods)
+6. [Usage](#6-usage)
+7. [Exchanging the `idToken`](#7-exchanging-the-idtoken)
+8. [Exchanging the `serverAuthCode`](#8-exchanging-the-serverauthcode)
+9. [Troubleshooting](#9-troubleshooting)
+10. [Changelog](#10-changelog)
 
 ## 1. Description
 
@@ -45,11 +44,6 @@ This step is _especially_ important if you are using a framework such as Ionic t
 ...
 </widget>
 ```
-
-### Browser
-Browser platform require a valid `WEB_APPLICATION_CLIENT_ID` that generated at [Google Developer Console](https://console.developers.google.com/).
-Ensure you have added your url address (example: `http://localhost:3000`) to **Authorized JavaScript origins** section.
-See [this screenshot for example](http://pix.toile-libre.org/upload/original/1508064473.png)
 
 ### iOS
 To get your iOS `REVERSED_CLIENT_ID`, [generate a configuration file here](https://developers.google.com/mobile/add?platform=ios&cntapi=signin).
@@ -165,9 +159,6 @@ function deviceReady() {
     window.plugins.googleplus.trySilentLogin(...);
 }
 ```
-
-### isAvailable
-3/31/16: This method is no longer required to be checked first. It is kept for code orthoganality.
 
 ### Login
 
