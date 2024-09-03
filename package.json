@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "pw-googleplus",
+  "name": "pw-google-plus",
   "cordova_name": "Google SignIn",
   "description": "Use your Google account to authenticate with the app.",
   "license": "MIT",

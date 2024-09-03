@@ -2,15 +2,8 @@
 
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][npm-url]
-[![Twitter Follow][twitter-image]][twitter-url]
 
-[build-status]:https://travis-ci.org/EddyVerbruggen/cordova-plugin-googleplus.svg?branch=master
-[build-url]:https://travis-ci.org/EddyVerbruggen/cordova-plugin-googleplus
-[npm-image]:http://img.shields.io/npm/v/cordova-plugin-googleplus.svg
-[npm-url]:https://npmjs.org/package/cordova-plugin-googleplus
-[downloads-image]:http://img.shields.io/npm/dm/cordova-plugin-googleplus.svg
-[twitter-image]:https://img.shields.io/twitter/follow/eddyverbruggen.svg?style=social&label=Follow%20me
-[twitter-url]:https://twitter.com/eddyverbruggen
+[npm-url]:https://npmjs.org/package/pw-google-plus
 
 > ⚠️ From plugin version 6.0.0 the minimum required cordova-ios version is 4.5.0. Need to use a lower cordova-ios version? Use plugin version 5.3.2 or lower.
 
@@ -36,21 +29,7 @@ You can also configure it to get an [idToken](#7-exchanging-the-idtoken) and [se
 
 This plugin only wraps access to the Google Sign-In API. Further API access should be implemented per use-case, per developer.
 
-## 2. Screenshots
-
-Android
-
-<img src="https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-googleplus/master/screenshots/Android1.png" width="235" height="400"/>&nbsp;
-<img src="https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-googleplus/master/screenshots/Android2.png" width="235" height="400"/>&nbsp;
-<img src="https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-googleplus/master/screenshots/Android3.png" width="235" height="400"/>
-
- iOS
-
-<img src="https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-googleplus/master/screenshots/iOS1.png" width="235" height="417"/>&nbsp;
-<img src="https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-googleplus/master/screenshots/iOS2.png" width="235" height="417"/>&nbsp;
-<img src="https://raw.githubusercontent.com/EddyVerbruggen/cordova-plugin-googleplus/master/screenshots/iOS3.png" width="235" height="417"/>&nbsp;
-
-## 3. Google API setup
+## 2. Google API setup
 To communicate with Google you need to do some tedious setup, sorry.
 
 It is (strongly) recommended that you use the same project for both iOS and Android.
@@ -105,7 +84,7 @@ Google re-signs your app with a different certificate when you publish it in the
 
 If you want to get an `idToken` or `serverAuthCode` back from the Sign In Process, you will need to pass the client ID for your project's web application. This can be found on your project's API credentials page on the [Google Developer's Console](https://console.developers.google.com/).
 
-## 4. Installation (PhoneGap CLI / Cordova CLI)
+## 3. Installation (PhoneGap CLI / Cordova CLI)
 This plugin is compatible with:
 * [Cordova Plugman](https://github.com/apache/cordova-plugman)
 * [PhoneGap 3.0 CLI](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Command-line%20Interface_add_features)
@@ -114,15 +93,15 @@ This plugin is compatible with:
 
 Here's how it works (backup your project first!):
 
-Using the Cordova CLI and [npm](https://www.npmjs.com/package/cordova-plugin-googleplus):
+Using the Cordova CLI and [npm](https://www.npmjs.com/package/pw-google-plus):
 ```
-$ cordova plugin add cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=myreversedclientid --variable WEB_APPLICATION_CLIENT_ID=mywebapplicationclientid
+$ cordova plugin add pw-google-plus --save --variable REVERSED_CLIENT_ID=myreversedclientid --variable WEB_APPLICATION_CLIENT_ID=mywebapplicationclientid
 $ cordova prepare
 ```
 
 Using the Cordova CLI to fetch the latest version from GitHub:
 ```
-$ cordova plugin add https://github.com/EddyVerbruggen/cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=myreversedclientid  --variable WEB_APPLICATION_CLIENT_ID=mywebapplicationclientid
+$ cordova plugin add https://github.com/pw-repo/pw-google-plus --save --variable REVERSED_CLIENT_ID=myreversedclientid  --variable WEB_APPLICATION_CLIENT_ID=mywebapplicationclientid
 $ cordova prepare
 ```
 
@@ -136,12 +115,12 @@ IMPORTANT:
 
 GooglePlus.js is brought in automatically. There is no need to change or add anything in your html.
 
-## 5. Installation (PhoneGap Build)
+## 4. Installation (PhoneGap Build)
 Add this to your config.xml:
 
 For the (stable) NPM Version:
 ```xml
-<plugin name="cordova-plugin-googleplus" source="npm">
+<plugin name="pw-google-plus" source="npm">
   <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
   <variable name="WEB_APPLICATION_CLIENT_ID" value="mywebapplicationclientid" />
 </plugin>
@@ -149,13 +128,13 @@ For the (stable) NPM Version:
 
 For the latest version from Git (not recommended):
 ```xml
-<plugin spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git" source="git">
+<plugin spec="https://github.com/pw-repo/pw-google-plus.git" source="git">
   <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
   <variable name="WEB_APPLICATION_CLIENT_ID" value="mywebapplicationclientid" />
 <plugin>
 ```
 
-## 6. Installation (iOS and Cocoapods)
+## 5. Installation (iOS and Cocoapods)
 
 This plugin use the [CocoaPods dependency manager](https://cocoapods.org) in order to satisfy the iOS Google SignIn SDK library dependencies.
 
@@ -171,7 +150,7 @@ cd platforms/ios/
 pod dependencies
 ```
 
-## 7. Usage
+## 6. Usage
 Check the [demo app](demo) to get you going quickly, or hurt yourself and follow these steps.
 
 Note that none of these methods should be called before [`deviceready`](https://cordova.apache.org/docs/en/latest/cordova/events/events.deviceready.html) has fired.
@@ -221,11 +200,11 @@ window.plugins.googleplus.login(
 
 The success callback (second argument) gets a JSON object with the following contents, with example data of my Google account:
 ```javascript
- obj.email          // 'eddyverbruggen@gmail.com'
+ obj.email          // 'juliaroberts@gmail.com'
  obj.userId         // user id
- obj.displayName    // 'Eddy Verbruggen'
- obj.familyName     // 'Verbruggen'
- obj.givenName      // 'Eddy'
+ obj.displayName    // 'Julai Roberts'
+ obj.familyName     // 'Roberts'
+ obj.givenName      // 'Julia'
  obj.imageUrl       // 'http://link-to-my-profilepic.google.com'
  obj.idToken        // idToken that can be exchanged to verify user identity.
  obj.serverAuthCode // Auth code that can be exchanged for an access token and refresh token for offline access
@@ -283,7 +262,7 @@ window.plugins.googleplus.disconnect(
 );
 ```
 
-## 8. Exchanging the `idToken`
+## 7. Exchanging the `idToken`
 
 Google Documentation for Authenticating with a Backend Server
 - [Web](https://developers.google.com/identity/sign-in/web/backend-auth)
@@ -298,7 +277,7 @@ This has several uses. On the client-side, it can be a way to get doubly confirm
 
 If your server-side only needs identity, and not additional account access, this is a secure and simple way to supply that information.
 
-## 9. Exchanging the `serverAuthCode`
+## 8. Exchanging the `serverAuthCode`
 
 Google Documentation for Enabling Server-Side Access
 - [Web](https://developers.google.com/identity/protocols/OAuth2WebServer#handlingresponse)
@@ -313,7 +292,7 @@ You have a couple options when it comes to this exchange: you can use the Google
 
 As stated before, this plugin is all about user authentication and identity, so any use of the user's account beyond that needs to be implemented per use case, per application.
 
-## 10. Troubleshooting
+## 9. Troubleshooting
 - Q: I can't get authentication to work on Android. And why is there no ANDROID API KEY?
 - A: On Android you need to execute the `keytool` steps, see the installation instructions for details.
 

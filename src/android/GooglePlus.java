@@ -39,7 +39,6 @@ import java.security.MessageDigest;
 import android.content.pm.Signature;
 
 /**
- * Originally written by Eddy Verbruggen (http://github.com/EddyVerbruggen/cordova-plugin-googleplus)
  * Forked/Duplicated and Modified by PointSource, LLC, 2016.
  */
 public class GooglePlus extends CordovaPlugin implements GoogleApiClient.OnConnectionFailedListener {

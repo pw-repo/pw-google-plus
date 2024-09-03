@@ -34,8 +34,8 @@ if(process.argv.join("|").indexOf("WEB_APPLICATION_CLIENT_ID=") > -1) {
 }
 
 var files = [
-    "platforms/browser/www/plugins/cordova-plugin-googleplus/src/browser/GooglePlusProxy.js",
-    "platforms/browser/platform_www/plugins/cordova-plugin-googleplus/src/browser/GooglePlusProxy.js"
+    "platforms/browser/www/plugins/pw-google-plus/src/browser/GooglePlusProxy.js",
+    "platforms/browser/platform_www/plugins/pw-google-plus/src/browser/GooglePlusProxy.js"
 ];
 
 for(var i=0; i<files.length; i++) {
