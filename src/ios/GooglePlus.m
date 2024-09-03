@@ -57,9 +57,9 @@
     NSString *hint = options[@"hint"];
     NSArray* scopes = options[@"scopes"];
 
-    [GIDSignIn.sharedInstance signInWithPresentingViewController:presentingViewController hint:hint additionalScopes:scopes completion:^(GIDSignInResult * _Nullable signInResult, NSError * _Nullable error) {
-       [self handleCompletion:user withError:error];
-    }]
+    [GIDSignIn.sharedInstance signInWithPresentingViewController:self.viewController hint:hint additionalScopes:scopes completion:^(GIDSignInResult * _Nullable signInResult, NSError * _Nullable error) {
+       [self handleCompletion:signInResult withError:error];
+    }];
 }
 
 - (void) trySilentLogin:(CDVInvokedUrlCommand*)command {
@@ -70,7 +70,7 @@
 
     [GIDSignIn.sharedInstance restorePreviousSignInWithCompletion:^(GIDGoogleUser * user, NSError * _Nullable error) {
       [self handleCompletion:user serverAuthCode:nil withError:error];
-    }]
+    }];
 }
 
 - (void)configureSignInWithOptions:(NSDictionary *)options {
@@ -110,7 +110,7 @@
                              @"givenName": user.profile.givenName ? : [NSNull null],
                              @"familyName": user.profile.familyName? : [NSNull null],
                              @"imageUrl": imageURL ? imageURL.absoluteString : [NSNull null],
-                             @"serverAuthCode": nil
+                             @"serverAuthCode": serverAuthCode ? : [NSNull null]
                              };
 
             CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
